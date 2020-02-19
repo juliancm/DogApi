@@ -1,6 +1,61 @@
-'use strict';
+function displayMultiRandDropdown () {
+    $('.consolePostMultiRand').html(constDropdown());
+    submitConsolePostMultiRandClick ();
+}
 
-function getDogImage() {
+function constDropdownDEAD() {
+  $('.consolePostMultiRand').html(`
+    <form>
+      <fieldset>
+        <label for="dogs">How many dogs?</label>
+          <select id="dogs">
+          <option value="1">1</option>
+          <button type="submit" class="submitAnswer button"> Submit</button>
+        </fieldset>
+    </form>`);
+}
+
+function constDropdown() {
+
+  let dropdownString ="";
+
+  dropdownString += `
+    <form>
+      <fieldset>
+        <label for="dogs">How many dogs?</label>
+          <select id="dogs">
+  `
+
+  for (let i=1;i<51;i++) {
+    dropdownString += `<option value="${i}">${i}</option>`
+  };
+
+  dropdownString += `
+        <button type="submit" class="submitAnswer button"> Submit</button>
+      </fieldset>
+    </form>
+  `
+
+  $('.consolePostMultiRand').html(dropdownString);
+
+}
+
+
+function submitConsolePostMultiRandClick () {
+    $('.submitAnswer').on('click', function(event) {
+        event.preventDefault();
+        if ($('input[id=dogs]').val() === undefined) {
+            alert('whoops');
+        } else {
+            alert('yay');
+        }
+    });
+}
+
+constDropdown();
+submitConsolePostMultiRandClick ();
+
+/*function getDogImage() {
   fetch('https://dog.ceo/api/breeds/image/random/3')
     .then(response => response.json())
     .then(responseJson =>
@@ -25,7 +80,7 @@ function watchForm() {
   });
 }
 /*currently testing with default of 3 add selection input*/
-function dogNumber () {
+/*function dogNumber () {
   return 3;
 }
 
@@ -35,7 +90,7 @@ function createMultipleEndpoint () {
 
 function getMoreDogImage () {
   /*take the user input and create a new endpoint url*/
-  fetch(createMultipleEndpoint())
+/*  fetch(createMultipleEndpoint())
   .then(response => response.json())
   .then(responseJson => displayResults(reponseJson))
   .catch(error => alert('Something went wrong. Try again later.'));
@@ -44,7 +99,7 @@ function getMoreDogImage () {
 $(function() {
   console.log('App loaded! Waiting for submit!');
   watchForm();
-});
+}); */
 
 /* input from jquery for a specific input
 name attribute $('input[name=optionChoice]:checked').val() */
