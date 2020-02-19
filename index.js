@@ -29,6 +29,29 @@ function constDropdown() {
   $('.consolePostMultiRand').html(dropdownString);
 }
 
+function getMultiDogJson() {
+  let selected = $('#dogs option:selected').val();
+  fetch(`https://dog.ceo/api/breeds/image/random/${selected}`)
+    .then(response => response.json())
+    .then(responseJson =>
+      displayResults(responseJson))
+      /*or console.log(responseJson)*/
+    .catch(error => alert('Something went wrong. Try again later.'));
+
+}
+
+
+function displayResults(responseJson) {
+
+let imgString = ""
+
+for (let i=0;i<responseJson.message.length;i++) {
+  imgString += `<img src="${responseJson.message[i]}" class="results-img">`
+};
+
+$('.displayDomMultiRand').html(imgString);
+
+}
 
 
 function submitConsolePostMultiRandClick () {
@@ -43,7 +66,7 @@ function submitConsolePostMultiRandClick () {
             alert('butt');
 
         } else {
-            alert('yay');
+            getMultiDogJson();
         }
     });
 }
