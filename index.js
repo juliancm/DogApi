@@ -1,20 +1,3 @@
-function displayMultiRandDropdown () {
-    $('.consolePostMultiRand').html(constDropdown());
-    submitConsolePostMultiRandClick ();
-}
-
-function constDropdownDEAD() {
-  $('.consolePostMultiRand').html(`
-    <form>
-      <fieldset>
-        <label for="dogs">How many dogs?</label>
-          <select id="dogs">
-          <option value="1">1</option>
-          <button type="submit" class="submitAnswer button"> Submit</button>
-        </fieldset>
-    </form>`);
-}
-
 function constDropdown() {
 
   let dropdownString ="";
@@ -23,29 +6,42 @@ function constDropdown() {
     <form>
       <fieldset>
         <label for="dogs">How many dogs?</label>
-          <select id="dogs">
+          <select id="dogs" name="dogs">
   `
 
-  for (let i=1;i<51;i++) {
+  for (let i=1;i<3;i++) {
+    dropdownString += `<option value="${i}">${i}</option>`
+  };
+
+  dropdownString += `<option value="3" selected>3</option>`
+
+  for (let i=4;i<51;i++) {
     dropdownString += `<option value="${i}">${i}</option>`
   };
 
   dropdownString += `
-        <button type="submit" class="submitAnswer button"> Submit</button>
+          </select>
+        <button type="submit" class="submitAnswer"> Submit</button>
       </fieldset>
     </form>
   `
 
   $('.consolePostMultiRand').html(dropdownString);
-
 }
 
 
+
 function submitConsolePostMultiRandClick () {
+
     $('.submitAnswer').on('click', function(event) {
         event.preventDefault();
-        if ($('input[id=dogs]').val() === undefined) {
-            alert('whoops');
+
+        if ($('#dogs option:selected').val() === '45') {
+
+/* Strict equality: 45 the string is not the 45 integer*/
+
+            alert('butt');
+
         } else {
             alert('yay');
         }
