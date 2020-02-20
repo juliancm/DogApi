@@ -152,7 +152,7 @@ function submitSingleBreedInputClick () {
 }
 
 function getSingleBreedJson() {
-  let selected = $('#breedInput').val();
+  let selected = $('#breedInput').val().toLowerCase();
   if (selected.includes(' ')) {
     selected = normalizeSingleBreedInput();
   }
@@ -172,7 +172,7 @@ function getSingleBreedJson() {
 }
 
 function normalizeSingleBreedInput () {
-  let str = $('#breedInput').val();
+  let str = $('#breedInput').val().toLowerCase();
   let strArray = str.split(' ');
   let newStr = strArray[1]+' '+strArray[0];
   return newStr.replace(/ /g, '/');
