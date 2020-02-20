@@ -142,8 +142,6 @@ function submitSingleBreedInputClick () {
 
         if ($('#breedInput').val() === '') {
 
-/* Strict equality: 45 the string is not the 45 integer*/
-
             alert('please input a breed');
 
         } else {
@@ -179,13 +177,6 @@ function normalizeSingleBreedInput () {
   let newStr = strArray[1]+' '+strArray[0];
   return newStr.replace(/ /g, '/');
 }
-
-/* function breedCheck () {
-  $.getJSON('https://dog.ceo/api/breeds/list/all', function (result) {
-    console.log(result);
-  });
-} */
-
 
 function breedError (responseJson) {
   let errorString = `<p>${responseJson.message}</p>`
