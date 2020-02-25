@@ -161,12 +161,13 @@ function getSingleBreedJson() {
       if (response.ok) {
         return response.json();
       }
-      throw new Error(response.statusText);
+      throw new Error(response.status);
     })
     .then(responseJson =>
       displayBreedResults(responseJson))
     .catch(error => {
-      $('.singleBreedDisplayArea').html(`<p>${error.message}</p>`);
+      $('.singleBreedDisplayArea').html(`<p>Breed not found, try again.</p>`);
+      console.log(error)
     });
 
 }
